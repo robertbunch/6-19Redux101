@@ -10,6 +10,7 @@ import Main from './components/Main'
 function App(){
 	return(
 		<Router>
+			<h1>Welcome to Publix Inventory System</h1>
 			<Route path="/" component={NavBar} />
 			<Route exact path="/" component={Main} />
 			<Route exact path="/meat-dept" component={MeatDept} />
