@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import MeatDept from './MeatDept';
 
 class Main extends Component{
     render(){
@@ -19,6 +20,9 @@ class Main extends Component{
         return(
             <div>
                 {storeProducts}
+                {/* <MeatDept />
+                <DairyDept />
+                <FrozenDept /> */}
             </div>
         )
     }
