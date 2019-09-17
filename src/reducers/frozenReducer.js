@@ -26,7 +26,15 @@ export default (state = seedData, action)=>{
     console.log(action.type)
     console.log(action.payload)
     if(action.type === 'updateFrozen'){
-        return action.payload;
+        // the user clicked on a + or - button on a frozen item
+        // we make a copy of state... we NEVER EVER change it ourselves
+        let newState = [...state];
+        if(action.payload.operation === '+'){
+            newState[action.payload.indexToChange].quantity++;
+        }else if(action.payload.operation === '-'){
+            newState[action.payload.indexToChange].quantity--;
+        }
+        return newState;
     }else{
         return state;
     }

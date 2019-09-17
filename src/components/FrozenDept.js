@@ -7,17 +7,22 @@ import { bindActionCreators } from 'redux';
 
 class FrozenDept extends Component{
 
-
     componentDidMount(){
-        this.props.updateFrozen([{}]);
+        // this.props.updateFrozen([]);        
     }
 
+    changeQuantity = (operation,indexToChange)=>{
+        console.log(operation,indexToChange);
+        this.props.updateFrozen(operation,indexToChange);
+    }
+    
     render(){
-        
         let frozenData = this.props.frozenData.map((frozen,i)=>{
             return (
                 <div key={i}>
-                    <h1>{frozen.food}: {frozen.quantity}</h1>
+                    <li>{frozen.food}: {frozen.quantity}</li>
+                    <input className="add-button" type="button" onClick={()=>{this.changeQuantity('+',i)}} value="+" />
+                    <input className="add-button" type="button" onClick={()=>{this.changeQuantity('-',i)}} value="-" />
                 </div>
             )
         })
