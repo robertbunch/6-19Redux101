@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import updateMeat from '../actions/meatInvUpdate';
+import AddItem from './AddItem';
 
 class MeatDept extends Component{
 
@@ -27,6 +28,7 @@ class MeatDept extends Component{
         console.log(this.props.meatData);
         return(
             <div>
+                <AddItem dept="Meat" />
                 {meatData}
             </div>
         )

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import updateDairy from '../actions/dairyInvUpdate';
+import AddItem from './AddItem';
 
 class Dairy extends Component{
 
@@ -22,6 +23,7 @@ class Dairy extends Component{
 
         return(
             <div>
+                <AddItem dept="Dairy" />
                 {dairyData}
             </div>
         )

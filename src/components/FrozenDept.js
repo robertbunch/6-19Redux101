@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import updateFrozen from '../actions/frozenInvUpdate';
 // in order for updateFrozen to be an actionCreator...
 import { bindActionCreators } from 'redux';
+import AddItem from './AddItem';
 
 class FrozenDept extends Component{
 
@@ -30,6 +31,7 @@ class FrozenDept extends Component{
         console.log(this.props.frozenData);
         return(
             <div>
+                <AddItem dept="Frozen" />
                 {frozenData}
             </div>
         )

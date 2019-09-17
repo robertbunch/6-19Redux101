@@ -37,6 +37,16 @@ export default (state = seedData, action)=>{
         return [];
     }else if(action.type === 'resetInventory'){
         return seedData;
+    }else if(action.type === 'addItem-Dairy'){
+        let newState = [...state];
+        const food = action.payload.food
+        const quantity = action.payload.quantity
+        // const { food, quantity } = action.payload
+        newState.push({
+            food,
+            quantity
+        })
+        return newState
     }else{
         return state;
     }

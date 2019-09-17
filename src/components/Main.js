@@ -26,7 +26,7 @@ class Main extends Component{
         })
 
         return(
-            <div className="col col-sm-3">
+            <div className="col col-sm-12">
                 <button onClick={this.props.resetInventory}>Reset Inventory</button>
                 <button onClick={this.props.clearInventory}>Clear All Inventory</button>
                 <h2>Frozen Dept Total: {frozenQuantity}</h2>
