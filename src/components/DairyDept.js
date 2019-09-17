@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import updateDairy from '../actions/dairyInvUpdate';
 
 class Dairy extends Component{
+
+    changeQuantity = (operation,indexToChange)=>{
+        this.props.updateDairy(operation,indexToChange)
+    }
+
     render(){
         let dairyData = this.props.dairyData.map((dairy,i)=>{
             return (
                 <div key={i}>
-                    <h1>{dairy.food}: {dairy.quantity}</h1>
+                    <li>{dairy.food}: {dairy.quantity}</li>
+                    <input className="add-button" type="button" onClick={()=>{this.changeQuantity('+',i)}} value="+" />
+                    <input className="subtract-button" type="button" onClick={()=>{this.changeQuantity('-',i)}} value="-" />
                 </div>
             )
         })
@@ -25,7 +34,12 @@ function mapStateToProps(state){
     }
 }
 
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({
+        updateDairy
+    }, dispatch)
+}
 
 // export default Dairy;
-export default connect(mapStateToProps)(Dairy);
+export default connect(mapStateToProps,mapDispatchToProps)(Dairy);
 

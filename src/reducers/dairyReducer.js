@@ -24,5 +24,20 @@ const seedData = [
 export default (state = seedData, action)=>{
     console.log("Dairy Reducer is running!");
     console.log(action.type)
-    return state;
+    if(action.type === 'updateDairy'){
+        let newState = [...state];
+        let p = action.payload;
+        if(p.operation === '+'){
+            newState[p.indexToChange].quantity++;
+        }else if(p.operation === '-'){
+            newState[p.indexToChange].quantity--;
+        }
+        return newState
+    }else if(action.type === 'clearInventory'){
+        return [];
+    }else if(action.type === 'resetInventory'){
+        return seedData;
+    }else{
+        return state;
+    }
 }

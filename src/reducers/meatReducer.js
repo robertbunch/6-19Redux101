@@ -24,5 +24,19 @@ const seedData = [
 export default (state = seedData, action)=>{
     console.log("Meat Reducer is running!");
     console.log(action.type)
-    return state;
+    if(action.type === 'updateMeat'){
+        let newState = [...state];
+        if(action.payload.operation === '+'){
+            newState[action.payload.indexToChange].quantity++;
+        }else if(action.payload.operation === '-'){
+            newState[action.payload.indexToChange].quantity--;
+        }
+        return newState;
+    }else if(action.type === 'clearInventory'){
+        return [];
+    }else if(action.type === 'resetInventory'){
+        return seedData;
+    }else{
+        return state;
+    }
 }

@@ -2,13 +2,23 @@ import React, { Component } from 'react';
 // in order for this component to know about Redux, we need some glue
 // react-redux... specificallly, the connect thing
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import updateMeat from '../actions/meatInvUpdate';
 
 class MeatDept extends Component{
+
+    changeQuantity = (operation,indexToChange)=>{
+        this.props.updateMeat(operation,indexToChange)
+    }
+
     render(){
         let meatData = this.props.meatData.map((meat,i)=>{
             return (
                 <div key={i}>
-                    <h1>{meat.food}: {meat.quantity}</h1>
+                    <li>{meat.food}: {meat.quantity}</li>
+                    <input className="add-button" type="button" onClick={()=>{this.changeQuantity('+',i)}} value="+" />
+                    <input className="subtract-button" type="button" onClick={()=>{this.changeQuantity('-',i)}} value="-" />
+
                 </div>
             )
         })
@@ -34,6 +44,12 @@ function mapStateToProps(state){
     }
 }
 
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({
+        updateMeat
+    }, dispatch)
+}
+
 // export default MeatDept;
 // we don't export the class when we need redux
 // we export connect (a fucntion).
@@ -44,4 +60,4 @@ function mapStateToProps(state){
 // 3.1. that function takes a arg of the class
 // const MeatDeptWithRedux = connect(mapStateToProps)
 // export default MeatDeptWithRedux(MeatDept);
-export default connect(mapStateToProps)(MeatDept);
+export default connect(mapStateToProps, mapDispatchToProps)(MeatDept);
