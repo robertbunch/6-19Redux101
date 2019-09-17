@@ -24,5 +24,11 @@ const seedData = [
 export default (state = seedData, action)=>{
     console.log("Frozen Reducer is running!");
     console.log(action.type)
-    return state;
+    console.log(action.payload)
+    if(action.type === 'updateFrozen'){
+        return action.payload;
+    }else{
+        return state;
+    }
+    
 }

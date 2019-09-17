@@ -6,9 +6,10 @@
     // is then going to be handed to the dispatch
     // The dispatch will send that action 
     // to all reducers
-export default ()=>{
+export default (newValue)=>{
     return {
-        type: "updateFrozen"
+        type: "updateFrozen",
+        payload: newValue
     }
 }
 

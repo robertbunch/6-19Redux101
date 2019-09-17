@@ -6,8 +6,14 @@ import updateFrozen from '../actions/frozenInvUpdate';
 import { bindActionCreators } from 'redux';
 
 class FrozenDept extends Component{
+
+
+    componentDidMount(){
+        this.props.updateFrozen([{}]);
+    }
+
     render(){
-        this.props.updateFrozen();
+        
         let frozenData = this.props.frozenData.map((frozen,i)=>{
             return (
                 <div key={i}>
@@ -43,6 +49,14 @@ function mapDispatchToProps(dispatch){
         // creator, that will have return value (action)
         // sent to the dispatch
         updateFrozen: updateFrozen
+        // updateFrozen was a regular funciton.
+        // but... bindActionCreators is like being bit by a radio
+        // active spider. It's now an action creator.
+        // All an action creator is... is a function that returns
+        // an action.
+        // What is an action? An action is object that has 
+        // at LEAST ONE property: type. The dispatch
+        // will send that object to every reducer
     }, dispatch)
 }
 

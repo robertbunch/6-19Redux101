@@ -1,5 +1,5 @@
 // All reducers have 2 params:
-// 1. Current statement, usually provide a default
+// 1. Current state, usually provide a default
 // 2. The action object
 
 const seedData = [
